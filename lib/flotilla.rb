@@ -25,4 +25,12 @@ class Flotilla
       end
     end
   end
+
+  def personnel_by_ship
+    result = {}
+    ships.each do |ship|
+      result[ship] = recommend_personnel(ship)
+    end
+    result
+  end
 end
