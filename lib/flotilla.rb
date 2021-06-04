@@ -33,4 +33,14 @@ class Flotilla
     end
     result
   end
+
+  def ready_ships(fuel_req)
+    ships.find_all do |ship|
+      ship.fuel >= fuel_req && fully_staffed?(ship)
+    end
+  end
+
+  def fully_staffed?(ship)
+    recommend_personnel(ship).size >= ship.requirements.length
+  end
 end
