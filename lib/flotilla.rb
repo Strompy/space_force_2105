@@ -19,7 +19,7 @@ class Flotilla
     personnel.find_all do |person|
       next if person.specialties.empty?
 
-      ship.requirements.all? do |req|
+      ship.requirements.any? do |req|
         area, exp = req.first
         person.experience >= exp && person.specialties.include?(area)
       end
